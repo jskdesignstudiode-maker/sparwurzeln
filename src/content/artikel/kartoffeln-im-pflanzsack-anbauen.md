@@ -1,6 +1,6 @@
 ---
 title: "Kartoffeln im Pflanzsack anbauen – so gelingt die Ernte ohne Garten"
-status: entwurf
+status: freigegeben
 category: selbstversorgung
 description: "Kartoffeln im Pflanzsack anbauen: Behältergröße, Pflanzzeit, Erde nachfüllen, Gießen und Ernte – verständlich erklärt für Balkon und Terrasse."
 seoTitle: "Kartoffeln im Pflanzsack anbauen: Anleitung ohne Garten"
@@ -40,7 +40,6 @@ reviewNotes: |
   - Keine Amazon-Partnerlinks und keine Produkte eingebunden. Der Artikel enthält daher keine Werbekennzeichnung. Produkte nur nach Lieferung konkreter Links ergänzen.
   - Keine internen Links im Text, weil noch kein anderer Ratgeber veröffentlicht ist.
   - Kein Titelbild. Bitte ein eigenes Foto verwenden und einen Alt-Text eintragen.
-  - Vor der Freigabe: Status auf „freigegeben“ setzen.
 ---
 
 Kartoffeln brauchen kein Beet. Ein großer Eimer, eine Kiste oder ein Pflanzsack reichen aus, sofern Wasser unten abfließen kann und die Pflanze genug Erde hat. Das ist auf einem Balkon oder einer kleinen Terrasse machbar und für Anfänger gut zu überblicken.
