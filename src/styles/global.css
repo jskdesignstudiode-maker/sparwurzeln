@@ -289,7 +289,7 @@ svg {
 }
 .breadcrumb li + li::before {
   content: '›';
-  margin-right: 0.4rem;
+  margin-right: calc(0.4rem + 0.28em);
   color: var(--sand-dark);
 }
 .breadcrumb a {
