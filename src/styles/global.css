@@ -411,6 +411,15 @@ svg {
   color: var(--ink-soft);
   margin: 0;
 }
+.ad-note {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  background: #fbf3e2;
+  border-left: 4px solid var(--sand);
+  padding: 0.7rem 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 0 0 1.5rem;
+}
 .products__notice {
   font-size: 0.9rem;
   color: var(--ink-soft);

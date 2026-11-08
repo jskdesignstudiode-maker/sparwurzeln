@@ -1,8 +1,10 @@
 ---
 import Logo from './Logo.astro';
-import { site } from '../data/site';
-import { getCategories } from '../lib/content';
+import { site, AMAZON_NOTICE } from '../data/site';
+import { getCategories, getPublishedProducts } from '../lib/content';
 const categories = await getCategories();
+const products = await getPublishedProducts();
+const hasAmazon = [...products.values()].some((p) => p.data.network === 'amazon');
 const year = new Date().getFullYear();
 ---
 
@@ -31,6 +33,7 @@ const year = new Date().getFullYear();
     </nav>
   </div>
   <div class="container site-footer__bottom">
+    {hasAmazon && <p class="site-footer__amazon">{AMAZON_NOTICE}</p>}
     <p>© {year} Sparwurzeln. Unabhängiger Ratgeber – ohne Tracking, ohne Pop-ups.</p>
   </div>
 </footer>
@@ -86,5 +89,8 @@ const year = new Date().getFullYear();
   }
   .site-footer__bottom p {
     margin: 0;
+  }
+  .site-footer__bottom .site-footer__amazon {
+    margin-bottom: 0.5rem;
   }
 </style>

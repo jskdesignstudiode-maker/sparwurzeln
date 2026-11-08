@@ -56,9 +56,13 @@ export async function getPublishedArticles(): Promise<Article[]> {
   return out.sort((x, y) => effectiveDate(y).getTime() - effectiveDate(x).getTime());
 }
 
-export async function getPublishedProducts(): Promise<Map<string, Product>> {
-  const all = await getCollection('produkte');
-  return new Map(all.filter((p) => p.data.status === 'veroeffentlicht').map((p) => [p.id, p]));
+let productsPromise: Promise<Map<string, Product>> | undefined;
+export function getPublishedProducts(): Promise<Map<string, Product>> {
+  // Einmal pro Build lesen (Footer und Ratgeber-Seiten fragen mehrfach)
+  productsPromise ??= getCollection('produkte').then(
+    (all) => new Map(all.filter((p) => p.data.status === 'veroeffentlicht').map((p) => [p.id, p])),
+  );
+  return productsPromise;
 }
 
 export function formatDate(d: Date): string {

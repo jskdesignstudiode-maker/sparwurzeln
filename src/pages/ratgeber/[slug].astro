@@ -96,6 +96,16 @@ const jsonLd = {
       {d.image && <img class="article-image" src={d.image} alt={d.imageAlt ?? ''} decoding="async" />}
     </div>
 
+    {
+      products.length > 0 && (
+        <div class="prose">
+          <p class="ad-note">
+            <strong>Anzeige:</strong> Dieser Ratgeber enthält Werbelinks. Mehr dazu im <a href="/affiliate-hinweis">Affiliate-Hinweis</a>.
+          </p>
+        </div>
+      )
+    }
+
     <div class="prose article-body">
       <Content />
     </div>

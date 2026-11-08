@@ -1,31 +1,48 @@
 ---
 import Base from '../layouts/Base.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { AMAZON_NOTICE } from '../data/site';
 ---
 
 <Base
   title="Affiliate-Hinweis"
-  description="So finanziert sich Sparwurzeln: Wie wir mit Partnerlinks umgehen und wie sie gekennzeichnet sind."
+  description="So finanziert sich Sparwurzeln: Wie wir Partnerlinks kennzeichnen, was sie für Sie bedeuten und welche Grundsätze für Empfehlungen gelten."
 >
   <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Affiliate-Hinweis' }]} />
   <section class="section">
     <div class="container prose">
       <h1>Affiliate-Hinweis</h1>
       <p>
-        Sparwurzeln kann Links zu Produkten und Diensten enthalten, für die wir eine Provision
-        erhalten, wenn Sie darüber etwas kaufen. Für Sie ändert sich der Preis dadurch nicht.
+        Sparwurzeln finanziert sich zum Teil über Partnerlinks. Wenn Sie über einen solchen Link etwas kaufen, erhalten
+        wir eine kleine Provision. Für Sie ändert sich der Preis dadurch nicht.
       </p>
+
+      <h2>Amazon-Partnerprogramm</h2>
+      <p>{AMAZON_NOTICE}</p>
+
+      <h2>So erkennen Sie Werbelinks</h2>
+      <ul>
+        <li>
+          Direkt bei jedem Partnerlink steht deutlich sichtbar <strong>„Anzeige · Werbelink zu Amazon“</strong> (bei
+          anderen Anbietern entsprechend „Anzeige · Werbelink“). Die Links sind technisch als Werbelinks markiert
+          (<code>rel="sponsored"</code>).
+        </li>
+        <li>Ratgeber mit Werbelinks weisen zusätzlich am Anfang des Artikels darauf hin.</li>
+        <li>Wir zeigen keine Preise, Bewertungen oder Verfügbarkeiten an. Aktuelle Angaben finden Sie beim Händler.</li>
+      </ul>
+
       <h2>Unsere Grundsätze</h2>
       <ul>
-        <li>Links mit Provision sind als <strong>Werbung</strong> gekennzeichnet und mit rel="sponsored" versehen.</li>
         <li>Wir nennen Produkte nur, wenn sie zum Thema des Ratgebers passen.</li>
+        <li>Kostenlose und günstige Lösungen stehen zuerst. Ein Produkt ist eine mögliche Ergänzung.</li>
         <li>Wir behaupten keine eigenen Tests oder Erfahrungen, die wir nicht gemacht haben.</li>
+        <li>Die Provision beeinflusst unsere Aussagen nicht.</li>
       </ul>
-      <h2>Amazon-Partnerprogramm</h2>
-      <p>Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.</p>
-      <div class="notice">
-        <p><strong>Entwurf:</strong> Dieser Hinweis wird vor der Veröffentlichung an die tatsächlich genutzten Partnerprogramme und deren aktuelle Teilnahmebedingungen angepasst.</p>
-      </div>
+
+      <h2>Datenschutz bei Partnerlinks</h2>
+      <p>
+        Was beim Klick auf einen Partnerlink geschieht, steht in der <a href="/datenschutz">Datenschutzerklärung</a>, Abschnitt 6.
+      </p>
     </div>
   </section>
 </Base>

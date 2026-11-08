@@ -4,38 +4,38 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import { site } from '../data/site';
 ---
 
-<Base
-  title="Impressum"
-  description="Anbieterkennzeichnung von Sparwurzeln (Entwurf)."
-  noindex
->
+<Base title="Impressum" description="Anbieterangaben zu Sparwurzeln: Skaberhuset v/Jessica Stockmayer, Roslev, Dänemark. Kontakt und Verantwortliche für den Inhalt.">
   <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Impressum' }]} />
   <section class="section">
     <div class="container prose">
       <h1>Impressum</h1>
-      <div class="notice">
-        <p>
-          <strong>Entwurf, nicht zur Veröffentlichung.</strong> Die Anbieterkennzeichnung muss vor dem Start
-          mit den tatsächlichen Angaben der Betreiberin ausgefüllt und rechtlich geprüft werden.
-        </p>
-      </div>
-      <h2>Anbieterin</h2>
+
+      <h2>Angaben zum Anbieter</h2>
       <p>
-        [Vollständiger Name bzw. Firma der Betreiberin]<br />
-        [Straße und Hausnummer]<br />
-        [Postleitzahl, Ort]<br />
+        Skaberhuset v/Jessica Stockmayer<br />
+        Bjergbyvej 5<br />
+        7870 Roslev<br />
         Dänemark
       </p>
+      <p>
+        Einzelunternehmen, Gemeinde Skive<br />
+        CVR-Nr.: 45811816<br />
+        Umsatzsteuer-Identifikationsnummer: DK45811816
+      </p>
+
       <h2>Kontakt</h2>
-      <p>E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
-      <h2>Weitere Angaben</h2>
-      <p>[Registernummer (CVR), falls vorhanden, und weitere Pflichtangaben je nach Rechtsform]</p>
-      <h2>Noch zu klären</h2>
-      <ul>
-        <li>Welche Pflichtangaben für eine in Dänemark ansässige Betreiberin mit deutschem Publikum gelten.</li>
-        <li>Ob eine Telefonnummer oder weitere schnelle Kontaktmöglichkeit anzugeben ist.</li>
-        <li>Ob eine verantwortliche Person für redaktionelle Inhalte zu nennen ist.</li>
-      </ul>
+      <p>
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        Postanschrift: wie oben
+      </p>
+
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>Jessica Stockmayer, Anschrift wie oben</p>
+
+      <h2>Werbung</h2>
+      <p>
+        Sparwurzeln enthält Werbelinks. Wie wir sie kennzeichnen, steht im <a href="/affiliate-hinweis">Affiliate-Hinweis</a>.
+      </p>
     </div>
   </section>
 </Base>

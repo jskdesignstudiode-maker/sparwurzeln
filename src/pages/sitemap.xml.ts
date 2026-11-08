@@ -3,8 +3,7 @@ import { getCategories, getPublishedArticles, effectiveDate, isoDate } from '../
 import { site } from '../data/site';
 
 // Eigene Sitemap: nimmt nur indexierbare Seiten auf.
-// Nicht enthalten: Impressum und Datenschutz (noch Entwürfe, noindex), Kategorien ohne Ratgeber,
-// 404-Seite, Entwürfe.
+// Nicht enthalten: Kategorien ohne Ratgeber, 404-Seite, Entwürfe.
 export const GET: APIRoute = async () => {
   const [categories, articles] = await Promise.all([getCategories(), getPublishedArticles()]);
 
@@ -13,6 +12,8 @@ export const GET: APIRoute = async () => {
     { loc: '/ueber-uns' },
     { loc: '/kontakt' },
     { loc: '/affiliate-hinweis' },
+    { loc: '/impressum' },
+    { loc: '/datenschutz' },
   ];
   if (articles.length > 0) urls.push({ loc: '/ratgeber' });
 
