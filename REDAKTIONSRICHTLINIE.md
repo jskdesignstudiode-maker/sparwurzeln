@@ -3,12 +3,13 @@
 Diese Regeln gelten, wenn Claude im Chat aus „Thema + Kategorie“ einen Ratgeber-Entwurf erstellt und im Projekt speichert. Sie ersetzen keine Prüfung durch die Redaktion.
 
 ## Ablauf
-1. Du nennst Thema und Kategorie (optional: Zielgruppe, Schwerpunkt).
-2. Claude recherchiert seriöse Quellen, liest sie und schreibt den Artikel.
-3. Claude speichert die Datei `src/content/artikel/<slug>.md` mit `status: entwurf`. Der Entwurf ist auf der Website unsichtbar.
-4. Du prüfst im Admin (`/admin/` → Ratgeber) und gibst frei.
+1. Du nennst mir Thema und Kategorie (optional: Zielgruppe, Schwerpunkt).
+2. Ich recherchiere seriöse Quellen, lese sie und schreibe den Artikel samt SEO-Daten, FAQ, internen Links und Pinterest-Texten.
+3. **Gewöhnliche Themenanfrage:** Ich speichere `src/content/artikel/<slug>.md` mit `status: entwurf`, pushe das und zeige dir den Text. Der Entwurf ist nicht öffentlich. Du sagst „freigeben“ oder nennst Änderungen.
+4. **„Erstelle und veröffentliche einen Artikel“:** Nach den Qualitätsprüfungen unten setze ich `status: freigegeben` und den Prüftermin, führe Build und SEO-Prüfung aus, pushe, kontrolliere das Deployment und nenne dir den Link.
+5. Falls ein Check fehlschlägt oder eine Aussage nicht belegbar ist, veröffentliche ich nicht, sondern bleibe beim Entwurf und sage dir warum.
 
-Claude setzt **nie** `freigegeben`, **nie** ein Veröffentlichungsdatum und **nie** einen Prüftermin. Das ist deine Entscheidung.
+Dateien, Felder: Veröffentlichungsdatum = `publishDate` (leer = sofort), Aktualisierungsdatum = `lastReviewed`, Slug = Dateiname, Affiliate = `products` (IDs aus `src/content/produkte/`).
 
 ## Pflichtangaben im Entwurf
 - `title`, `category` (gültige ID), `description` (ca. 120–155 Zeichen), `seoTitle` (bis 60 Zeichen)
@@ -25,9 +26,11 @@ Claude setzt **nie** `freigegeben`, **nie** ein Veröffentlichungsdatum und **ni
 - Gefährliche Anleitungen (Strom, Gas, Einkochen mit Botulismusrisiko usw.) nur mit klarem Hinweis auf Grenzen und Fachbetrieb bzw. amtliche Quelle.
 - Website-Text spricht Leserinnen und Leser mit „Sie“ an.
 
-## Freigabe-Checkliste für dich
-- [ ] Die Quellen-Links öffnen und die wichtigsten Aussagen gegenprüfen
-- [ ] Titelbild mit Nutzungsrecht einfügen und Alt-Text ausfüllen
-- [ ] `reviewNotes` lesen, danach leeren oder behalten (wird nie angezeigt)
-- [ ] „Letzter Prüftermin“ auf heute setzen
-- [ ] Status auf „Freigegeben“ stellen und speichern
+## Qualitätsprüfungen vor jeder Veröffentlichung
+- Quellen gelesen, Zahlen und Sicherheitsaussagen gegengeprüft
+- Pflichtfelder vollständig, kein `[PRÜFEN`-Marker, keine erfundenen Erfahrungen oder Versprechen
+- Ein konkretes Problem wird gelöst, keine dünne Massenware; kostenlose Lösungen zuerst
+- Interne Links zeigen auf vorhandene, veröffentlichte Seiten
+- `npm run build` meldet 0 Fehler in der SEO-Prüfung
+- Affiliate: nur mit von dir gelieferten Partnerlinks, Kennzeichnung „Anzeige“ und `rel="sponsored"`, keine Preise, Bewertungen oder fremden Produktbilder
+- Titelbilder nur mit Nutzungsrecht

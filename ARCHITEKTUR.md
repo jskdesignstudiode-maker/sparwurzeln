@@ -16,15 +16,9 @@
 
 Die Vorgabe lautet: Inhalte und Produktdaten müssen dauerhaft erhalten bleiben, auch wenn der Website-Code aktualisiert wird. Liegen sie als eigene Dateien in einem eigenen Ordner (`src/content/`), sind sie von Code-Änderungen getrennt, versioniert und gesichert. Es entstehen keine Datenbankkosten.
 
-## Wie passen Admin-Bereich und statische Seiten zusammen? (Phase 2)
+## Wie werden Inhalte verwaltet?
 
-1. Die öffentlichen Seiten bleiben statisch (schnell, gut für Google).
-2. Der Admin-Bereich läuft unter `/admin`, geschützt durch **Cloudflare Access** (Anmeldung per E-Mail-Code, im Gratis-Kontingent für kleine Teams), nicht durch ein Passwort im Code.
-3. Beim Speichern schreibt der Admin die Datei per GitHub-Schnittstelle ins Repository.
-4. Cloudflare baut daraufhin die Seite automatisch neu und veröffentlicht sie (meist in 1–2 Minuten).
-5. Entwürfe haben den Status `draft` und werden nicht veröffentlicht, bis Sie freigeben.
-
-Die genaue Umsetzung (eigener Editor oder ein bestehendes, kostenloses Werkzeug) entscheiden wir zu Beginn von Phase 2.
+Es gibt **keinen Verwaltungsbereich**. Claude schreibt Ratgeber direkt als Dateien in `src/content/artikel/`, führt Build und SEO-Prüfung aus, pusht zu GitHub, und Cloudflare veröffentlicht automatisch. Ob ein Artikel erscheint, entscheidet das Feld `status` (`entwurf`, `in-pruefung`, `freigegeben`, `archiviert`) plus Pflichtangaben (`src/lib/content.ts`). Regeln: `REDAKTIONSRICHTLINIE.md`.
 
 ## Kosten
 
@@ -42,12 +36,10 @@ Keine kostenpflichtigen Dienste werden ohne deine Zustimmung eingebunden.
 
 ---
 
-## Stand Phase 2 (Admin und Redaktionsworkflow)
+## Stand (Vereinfachung)
 
-- **Inhalte** liegen als Dateien in `src/content/` (`artikel/*.md`, `kategorien/*.json`, `produkte/*.json`) und werden mit Astro Content Collections eingelesen. Neue Kategorien und Ratgeber erscheinen ohne Codeänderung.
-- **Admin** unter `/admin/`: Decap CMS (Open Source, lokal mitgeliefert, kein Fremdserver). Gespeichert wird per GitHub-Anmeldung direkt ins Repository; Cloudflare baut danach neu.
-- **Redaktionsworkflow** über das Feld `status` (Entwurf, In Prüfung, Freigegeben, Archiviert) plus Pflichtangaben (`src/lib/content.ts`). Nur Freigegebenes mit vollständigen Angaben wird gebaut.
-- **Worker** (`src/worker/`): GitHub-Anmeldung für den Admin, `noindex` auf Test-Domains (`workers.dev`), optionaler KI-Endpunkt (standardmäßig aus, nur für Personen mit Schreibrechten).
-- **SEO** : eigene `sitemap.xml` (nur indexierbare Seiten), `robots.txt`, Canonical auf `sparwurzeln.de`, Prüfskript `scripts/check-seo.mjs` bei jedem Build.
-- **Zeitplan**: täglicher GitHub-Workflow stößt Builds für geplante Veröffentlichungen an.
-- Bedienung: siehe `ANLEITUNG-ADMIN.md`.
+- **Inhalte**: Dateien in `src/content/` (`artikel/*.md`, `kategorien/*.json`, `produkte/*.json`), eingelesen über Astro Content Collections. Neue Ratgeber erscheinen ohne Codeänderung in Kategorie, Startseite und „Alle Ratgeber“.
+- **Entfernt**: `/admin/`, Decap CMS, GitHub-OAuth, KI-Endpunkt, CSV-Export und zugehörige Secrets und Skripte.
+- **Worker** (`src/worker/index.ts`): nur noch `noindex` und gesperrte robots.txt für Test-Adressen (`*.workers.dev`, `*.pages.dev`).
+- **SEO**: eigene `sitemap.xml` (nur indexierbare Seiten), `robots.txt`, Canonical auf `https://sparwurzeln.de`, Prüfskript `scripts/check-seo.mjs` bei jedem Build (Fehler brechen den Build ab).
+- **Zeitplan**: täglicher GitHub-Workflow stößt Builds für Artikel mit Veröffentlichungsdatum an (nicht getestet).

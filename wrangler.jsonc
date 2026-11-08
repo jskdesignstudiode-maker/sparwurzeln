@@ -7,13 +7,7 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    // Der Worker läuft nur für Seiten und /api/* (nicht für Bilder, Skripte und den Admin-Ordner),
-    // damit er im kostenlosen Kontingent bleibt.
-    "run_worker_first": ["/*", "!/_astro/*", "!/uploads/*", "!/admin/*", "!/favicon.svg"]
-  },
-  "vars": {
-    "GITHUB_REPO": "jskdesignstudiode-maker/sparwurzeln",
-    // KI-Modul: "false" = aus (keine Kosten). Zum Einschalten auf "true" setzen UND das Secret ANTHROPIC_API_KEY hinterlegen.
-    "AI_ENABLED": "false"
+    // Der Worker läuft nur für Seiten (nicht für Bilder und Skripte), damit er im kostenlosen Kontingent bleibt.
+    "run_worker_first": ["/*", "!/_astro/*", "!/uploads/*", "!/favicon.svg"]
   }
 }

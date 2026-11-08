@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Hilfen: Das Admin-Werkzeug schreibt leere Felder manchmal als "" oder null.
+// Hilfen: Leere Felder (""/null) in den Dateien werden wie fehlende Felder behandelt.
 const text = z
   .string()
   .nullish()

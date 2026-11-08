@@ -25,8 +25,7 @@ function walk(dir) {
 const files = walk(DIST);
 const pages = files
   .filter((f) => f.endsWith('.html'))
-  .map((f) => relative(DIST, f))
-  .filter((f) => !f.startsWith('admin'));
+  .map((f) => relative(DIST, f));
 
 const info = new Map(); // Pfad -> { noindex, canonical }
 for (const rel of pages) {
@@ -83,13 +82,16 @@ else {
   }
 }
 
+// Der frühere Verwaltungsbereich darf nicht mehr ausgeliefert werden
+if (existsSync(join(DIST, 'admin'))) err('dist/admin existiert noch (Verwaltungsbereich wurde entfernt)');
+if (existsSync(join(DIST, 'api'))) err('dist/api existiert noch');
+
 // robots.txt
 const robotsPath = join(DIST, 'robots.txt');
 if (!existsSync(robotsPath)) err('robots.txt fehlt');
 else {
   const robots = readFileSync(robotsPath, 'utf8');
   if (!robots.includes(`Sitemap: ${ORIGIN}/sitemap.xml`)) err('robots.txt: Sitemap-Zeile fehlt oder ist falsch');
-  if (!/Disallow:\s*\/admin\//.test(robots)) warn('robots.txt: /admin/ ist nicht gesperrt');
   if (/^Disallow:\s*\/\s*$/m.test(robots)) err('robots.txt sperrt die gesamte Website (Disallow: /)');
 }
 

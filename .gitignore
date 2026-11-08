@@ -4,6 +4,3 @@ dist
 .wrangler
 .dev.vars
 .env
-# Wird beim Build automatisch aus node_modules kopiert
-public/admin/*decap-cms.js
-public/admin/*decap-cms.js.LICENSE.txt

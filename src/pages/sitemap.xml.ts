@@ -4,7 +4,7 @@ import { site } from '../data/site';
 
 // Eigene Sitemap: nimmt nur indexierbare Seiten auf.
 // Nicht enthalten: Impressum und Datenschutz (noch Entwürfe, noindex), Kategorien ohne Ratgeber,
-// Admin-Bereich, 404-Seite, Entwürfe.
+// 404-Seite, Entwürfe.
 export const GET: APIRoute = async () => {
   const [categories, articles] = await Promise.all([getCategories(), getPublishedArticles()]);
 
