@@ -309,19 +309,13 @@ svg {
 .article-head {
   padding-block: clamp(1.5rem, 4vw, 3rem) 1rem;
 }
-.article-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.2rem;
-  font-size: 0.92rem;
-  color: var(--ink-soft);
-  margin: 0 0 1.5rem;
-}
 .article-image {
   border-radius: var(--radius);
-  margin-bottom: 2rem;
+  margin: 0.5rem 0 2rem;
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 .article-body {
   padding-bottom: 2rem;
@@ -333,8 +327,17 @@ svg {
   margin-top: 1.4em;
 }
 .prose img {
+  display: block;
+  width: 100%;
   height: auto;
   border-radius: var(--radius);
+  margin: 1.6rem 0 0.5rem;
+}
+.prose img + em {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
 }
 .prose table {
   border-collapse: collapse;

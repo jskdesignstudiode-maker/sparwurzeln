@@ -86,14 +86,6 @@ const jsonLd = {
     <div class="prose">
       <a class="eyebrow" href={`/kategorie/${category.id}`}>{category.data.title}</a>
       <h1>{d.title}</h1>
-      <p class="article-meta">
-        <span>Veröffentlicht: <time datetime={isoDate(published)}>{formatDate(published)}</time></span>
-        {
-          d.lastReviewed && (
-            <span>Zuletzt geprüft: <time datetime={isoDate(d.lastReviewed)}>{formatDate(d.lastReviewed)}</time></span>
-          )
-        }
-      </p>
       {d.image && <img class="article-image" src={d.image} alt={d.imageAlt ?? ''} decoding="async" />}
     </div>
 
@@ -130,7 +122,7 @@ const jsonLd = {
         <section class="products" aria-labelledby="produkte-titel">
           <h2 id="produkte-titel">Passende Produkte <span class="badge">Anzeige</span></h2>
           <p class="products__notice">
-            Die folgenden Links sind Werbelinks. Wenn Sie darüber kaufen, erhalten wir eine Provision. Für Sie
+            Die folgenden Links sind Werbelinks. Wenn du darüber kaufst, erhalten wir eine Provision. Für dich
             ändert sich der Preis nicht.
           </p>
           {products.map((p) => <ProductBox product={p!} />)}
