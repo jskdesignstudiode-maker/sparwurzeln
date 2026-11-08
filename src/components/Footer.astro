@@ -1,0 +1,87 @@
+---
+import Logo from './Logo.astro';
+import { categories, site } from '../data/categories';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <Logo size={36} />
+      <p class="site-footer__slogan">{site.slogan}</p>
+    </div>
+    <nav aria-label="Themen">
+      <h2 class="site-footer__h">Themen</h2>
+      <ul>
+        {categories.map((c) => <li><a href={`/kategorie/${c.slug}`}>{c.title}</a></li>)}
+      </ul>
+    </nav>
+    <nav aria-label="Informationen">
+      <h2 class="site-footer__h">Informationen</h2>
+      <ul>
+        <li><a href="/ueber-uns">Über Sparwurzeln</a></li>
+        <li><a href="/affiliate-hinweis">Affiliate-Hinweis</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© {year} Sparwurzeln. Unabhängiger Ratgeber – ohne Tracking, ohne Pop-ups.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--green);
+    color: var(--cream);
+    margin-top: 2rem;
+    padding-top: 3rem;
+  }
+  .site-footer :global(.logo__text) {
+    color: var(--cream);
+  }
+  .site-footer__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .site-footer__slogan {
+    margin-top: 1rem;
+    max-width: 28ch;
+    color: #e6e1d0;
+  }
+  .site-footer__h {
+    font-family: var(--font);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e6d3b6;
+    margin-bottom: 0.8rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0.4rem;
+  }
+  a {
+    color: var(--cream);
+  }
+  a:hover {
+    color: var(--white);
+  }
+  .site-footer__bottom {
+    border-top: 1px solid rgba(245, 242, 233, 0.25);
+    margin-top: 2.5rem;
+    padding-block: 1.25rem;
+    font-size: 0.9rem;
+    color: #e6e1d0;
+  }
+  .site-footer__bottom p {
+    margin: 0;
+  }
+</style>

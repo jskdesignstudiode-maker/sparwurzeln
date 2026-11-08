@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { site } from '../data/categories';
+---
+
+<Base
+  title="Impressum"
+  description="Anbieterkennzeichnung von Sparwurzeln (Entwurf)."
+  noindex
+>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Impressum' }]} />
+  <section class="section">
+    <div class="container prose">
+      <h1>Impressum</h1>
+      <div class="notice">
+        <p>
+          <strong>Entwurf, nicht zur Veröffentlichung.</strong> Die Anbieterkennzeichnung muss vor dem Start
+          mit den tatsächlichen Angaben der Betreiberin ausgefüllt und rechtlich geprüft werden.
+        </p>
+      </div>
+      <h2>Anbieterin</h2>
+      <p>
+        [Vollständiger Name bzw. Firma der Betreiberin]<br />
+        [Straße und Hausnummer]<br />
+        [Postleitzahl, Ort]<br />
+        Dänemark
+      </p>
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <h2>Weitere Angaben</h2>
+      <p>[Registernummer (CVR), falls vorhanden, und weitere Pflichtangaben je nach Rechtsform]</p>
+      <h2>Noch zu klären</h2>
+      <ul>
+        <li>Welche Pflichtangaben für eine in Dänemark ansässige Betreiberin mit deutschem Publikum gelten.</li>
+        <li>Ob eine Telefonnummer oder weitere schnelle Kontaktmöglichkeit anzugeben ist.</li>
+        <li>Ob eine verantwortliche Person für redaktionelle Inhalte zu nennen ist.</li>
+      </ul>
+    </div>
+  </section>
+</Base>

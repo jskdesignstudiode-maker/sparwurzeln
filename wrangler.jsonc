@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sparwurzeln",
+  "compatibility_date": "2026-11-01",
+  // Reine statische Auslieferung: kein Worker-Code nötig, keine laufenden Kosten über das Gratis-Kontingent hinaus.
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

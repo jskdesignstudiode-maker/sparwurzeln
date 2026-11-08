@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<Base
+  title="Über Sparwurzeln"
+  description="Sparwurzeln ist ein unabhängiges Ratgeberportal für günstigeres, einfacheres und selbstbestimmteres Leben."
+>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Über Sparwurzeln' }]} />
+  <section class="section">
+    <div class="container prose">
+      <h1>Über Sparwurzeln</h1>
+      <p class="lead">Weniger ausgeben. Mehr selber machen. Besser leben.</p>
+      <p>
+        Sparwurzeln ist ein unabhängiger Ratgeber für alle, die ihren Alltag günstiger, einfacher
+        und selbstbestimmter gestalten möchten. Wir erklären, wie man Kosten senkt, Lebensmittel
+        selbst anbaut und haltbar macht, günstig kocht und Dinge repariert, statt sie zu ersetzen.
+      </p>
+      <h2>Wie wir arbeiten</h2>
+      <ul>
+        <li>Wir erklären nachvollziehbar und nennen Sparbeispiele nur, wenn sie sich belegen lassen.</li>
+        <li>Bei Sicherheit, Gesundheit und Finanzen stützen wir uns auf seriöse Quellen.</li>
+        <li>Produkte empfehlen wir nur, wenn sie zum Thema passen. Links mit Provision kennzeichnen wir als Werbung.</li>
+      </ul>
+      <div class="notice">
+        <p><strong>Entwurf:</strong> Dieser Text ist ein Platzhalter. Angaben zur Redaktion und zur Betreiberin werden ergänzt, sobald sie feststehen.</p>
+      </div>
+    </div>
+  </section>
+</Base>

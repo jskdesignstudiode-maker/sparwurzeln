@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { site } from '../data/categories';
+---
+
+<Base
+  title="Datenschutzerklärung"
+  description="Datenschutzerklärung von Sparwurzeln (Entwurf)."
+  noindex
+>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Datenschutzerklärung' }]} />
+  <section class="section">
+    <div class="container prose">
+      <h1>Datenschutzerklärung</h1>
+      <div class="notice">
+        <p>
+          <strong>Entwurf, nicht zur Veröffentlichung.</strong> Dieser Text ist eine Arbeitsgrundlage und
+          muss vor dem Start rechtlich geprüft und an die tatsächlich genutzten Dienste angepasst werden.
+        </p>
+      </div>
+      <h2>Verantwortliche</h2>
+      <p>[Name und Anschrift der Betreiberin, siehe Impressum]<br />E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <h2>Hosting und Server-Logdaten</h2>
+      <p>
+        Die Website wird über Cloudflare ausgeliefert. Dabei können technisch notwendige Daten wie
+        IP-Adresse, Zeitpunkt und aufgerufene Seite verarbeitet werden. [Genaue Angaben zu Anbieter,
+        Rechtsgrundlage, Speicherdauer und Auftragsverarbeitung nach Prüfung ergänzen.]
+      </p>
+      <h2>Cookies und Tracking</h2>
+      <p>
+        Die Website setzt in diesem Entwurfsstand keine Cookies und verwendet keine Analyse- oder
+        Trackingdienste. Sollte sich das ändern, wird dieser Abschnitt angepasst.
+      </p>
+      <h2>Kontaktaufnahme per E-Mail</h2>
+      <p>[Angaben zur Verarbeitung von E-Mail-Anfragen, Rechtsgrundlage und Speicherdauer ergänzen.]</p>
+      <h2>Ihre Rechte</h2>
+      <p>[Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Beschwerderecht bei einer Aufsichtsbehörde – Aufsichtsbehörde der Betreiberin benennen.]</p>
+      <h2>Noch zu klären</h2>
+      <ul>
+        <li>Zuständige Aufsichtsbehörde in Dänemark und Vorgaben für ein deutschsprachiges Publikum.</li>
+        <li>Angaben zu Cloudflare (Datenverarbeitung, mögliche Drittlandübermittlung).</li>
+        <li>Spätere Dienste wie Newsletter, Formulare oder Einbindungen von Affiliate-Netzwerken.</li>
+      </ul>
+    </div>
+  </section>
+</Base>

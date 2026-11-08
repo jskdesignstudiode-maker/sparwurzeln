@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+---
+
+<Base
+  title="Affiliate-Hinweis"
+  description="So finanziert sich Sparwurzeln: Wie wir mit Partnerlinks umgehen und wie sie gekennzeichnet sind."
+>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Affiliate-Hinweis' }]} />
+  <section class="section">
+    <div class="container prose">
+      <h1>Affiliate-Hinweis</h1>
+      <p>
+        Sparwurzeln kann Links zu Produkten und Diensten enthalten, für die wir eine Provision
+        erhalten, wenn Sie darüber etwas kaufen. Für Sie ändert sich der Preis dadurch nicht.
+      </p>
+      <h2>Unsere Grundsätze</h2>
+      <ul>
+        <li>Links mit Provision sind als <strong>Werbung</strong> gekennzeichnet und mit rel="sponsored" versehen.</li>
+        <li>Wir nennen Produkte nur, wenn sie zum Thema des Ratgebers passen.</li>
+        <li>Wir behaupten keine eigenen Tests oder Erfahrungen, die wir nicht gemacht haben.</li>
+      </ul>
+      <h2>Amazon-Partnerprogramm</h2>
+      <p>Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.</p>
+      <div class="notice">
+        <p><strong>Entwurf:</strong> Dieser Hinweis wird vor der Veröffentlichung an die tatsächlich genutzten Partnerprogramme und deren aktuelle Teilnahmebedingungen angepasst.</p>
+      </div>
+    </div>
+  </section>
+</Base>

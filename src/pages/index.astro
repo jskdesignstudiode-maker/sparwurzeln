@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { categories, site } from '../data/categories';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  description: site.slogan,
+  inLanguage: 'de-DE',
+};
+---
+
+<Base
+  title={site.name}
+  description="Sparwurzeln ist ein unabhängiger Ratgeber für günstigeres, einfacheres und selbstbestimmteres Leben: Geld sparen, selbst anbauen, günstig kochen, Vorräte anlegen und reparieren."
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <span class="eyebrow">Unabhängiger Ratgeber</span>
+      <h1>Weniger ausgeben.<br />Mehr selber machen.<br />Besser leben.</h1>
+      <p class="lead">
+        Praktische Lösungen für den Alltag: verständlich erklärt, Schritt für Schritt und ohne
+        große Versprechen. Von der Stromrechnung bis zum Gemüsebeet.
+      </p>
+      <p class="hero__actions">
+        <a class="btn" href="#themen">Themen entdecken</a>
+        <a class="btn btn--ghost" href="/ueber-uns">Über Sparwurzeln</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="themen" aria-labelledby="themen-titel">
+    <div class="container">
+      <span class="eyebrow">Fünf Themenbereiche</span>
+      <h2 id="themen-titel">Wo möchten Sie anfangen?</h2>
+      <div class="grid">
+        {
+          categories.map((c) => (
+            <a class="card card--link" href={`/kategorie/${c.slug}`}>
+              <Icon name={c.icon} />
+              <h3>{c.title}</h3>
+              <p>{c.short}</p>
+              <span class="card__more">Zum Thema →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="prinzipien-titel">
+    <div class="container">
+      <span class="eyebrow">Unser Anspruch</span>
+      <h2 id="prinzipien-titel">Ratgeber, die man prüfen kann</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Nachvollziehbar</h3>
+          <p>
+            Wir erklären, wie etwas funktioniert und warum. Sparbeispiele nennen wir nur, wenn
+            sich die Rechnung offenlegen lässt.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Ehrlich bei Empfehlungen</h3>
+          <p>
+            Produkte erwähnen wir nur, wenn sie zum Thema passen. Links mit Provision sind
+            immer als Werbung gekennzeichnet.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Sorgfältig bei Sicherheit</h3>
+          <p>
+            Bei Lebensmittelsicherheit, Gesundheit und Finanzen stützen wir uns auf seriöse
+            Quellen und sagen, wo Fachleute gefragt sind.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 6.5rem);
+    background: var(--cream-light);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero__inner {
+    max-width: 52rem;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+</style>

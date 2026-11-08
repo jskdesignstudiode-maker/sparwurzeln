@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sparwurzeln">
+  <rect width="64" height="64" rx="14" fill="#526747"/>
+  <path d="M32 34V22" stroke="#F5F2E9" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M32 24c0-7 5-11 12-11 0 7-5 11-12 11Z" fill="#F5F2E9"/>
+  <path d="M32 27c0-5-4-8-9-8 0 5 4 8 9 8Z" fill="#B9956B"/>
+  <path d="M32 34c0 6-1 9-7 14M32 34c0 6 1 9 7 14M32 34v14" stroke="#B9956B" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
