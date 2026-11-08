@@ -18,9 +18,16 @@ faq:
   - question: "Darf ich grüne Kartoffeln essen?"
     answer: "Nein. Die RHS rät, grüne Kartoffeln auszusortieren, weil sie giftig sein können. Die Grünfärbung entsteht durch Licht. Deshalb sollen die Knollen im Behälter immer von Erde bedeckt sein."
   - question: "Kann ich normale Speisekartoffeln aus dem Supermarkt pflanzen?"
-    answer: "Nach dem BZL geht das grundsätzlich. Das Amt empfiehlt aber Pflanzkartoffeln, weil sie sortenecht und frei von Erregern typischer Kartoffelkrankheiten sind. Auch die RHS rät zu zertifiziertem, virusfreiem Pflanzgut."
+    answer: "Nach dem BZL geht das grundsätzlich. Das BZL empfiehlt aber Pflanzkartoffeln, weil sie sortenecht und frei von Erregern typischer Kartoffelkrankheiten sind. Auch die RHS rät zu zertifiziertem, virusfreiem Pflanzgut."
   - question: "Wie viel Ernte bekomme ich aus einem Sack?"
     answer: "Dazu lässt sich keine verlässliche Zahl nennen. Die Ernte hängt von Sorte, Behälter, Wetter und Pflege ab, und die Fachquellen nennen keine Erträge. Das BZL weist lediglich darauf hin, dass manche Sorten wie die Vitelotte eher geringe Erträge bringen."
+productPlacements:
+  - product: pflanzsaecke-40-liter-set
+    after: "Welche Sackgröße ist sinnvoll?"
+  - product: kiepenkerl-grillkartoffel-mix
+    after: "Pflanzkartoffeln und Vorkeimen"
+  - product: grannys-world-bio-fluessigduenger
+    after: "Standort, Gießen und Nährstoffe"
 products:
   - pflanzsaecke-40-liter-set
   - kiepenkerl-grillkartoffel-mix
@@ -76,7 +83,7 @@ Dieser Ratgeber zeigt, welche Behältergröße sinnvoll ist, was du günstig sel
 
 ## Welche Sackgröße ist sinnvoll?
 
-Das BZL nennt als Untergrenze 10 Liter Volumen und schreibt, dass größere Behälter besser sind. Die RHS empfiehlt mindestens 30 cm Breite und 30 cm Tiefe. Bei einem runden Behälter sind das rechnerisch gut 20 Liter.
+Das BZL nennt als Untergrenze 10 Liter Volumen und schreibt, dass größere Behälter besser sind. Die RHS empfiehlt mindestens 30 cm Breite und 30 cm Tiefe. Bei einem runden Behälter sind das, grob gerechnet, gut 20 Liter.
 
 ### Warum der Wasserabzug so wichtig ist
 
@@ -92,9 +99,9 @@ Dunkle Plastikeimer erwärmen sich schneller. Das BZL warnt davor, sie in die pr
 
 Eine feste Zahl für alle Säcke gibt es nicht. Das BZL nennt für einen 10-Liter-Eimer etwa drei bis vier Knollen. Die RHS rechnet mit einer Knolle je 30 cm Behälterdurchmesser. Ein Behälter mit 60 cm Durchmesser nimmt demnach zwei auf. Die Zahlen liegen auseinander.
 
-Pflanze nicht zu dicht. Die Pflanzen teilen sich Erde, Wasser und Nährstoffe, und im Behälter ist der Wurzelraum begrenzt. Dazu kommt: Je enger die Knollen liegen, desto stärker konkurrieren sie.
+Pflanze nicht zu dicht. Die Pflanzen teilen sich Erde, Wasser und Nährstoffe, und im Behälter ist der Wurzelraum begrenzt. Je enger die Knollen liegen, desto stärker konkurrieren sie.
 
-> **Vorsichtige Anfängerempfehlung (unsere Einschätzung, keine Quellenangabe):** Orientiere dich an der strengeren RHS-Regel. Bei einem Behälter mit etwa 30 cm Durchmesser reicht eine Knolle. Bei etwa 40 cm sind ein bis zwei sinnvoll. Die höheren Zahlen des BZL sind eher die Obergrenze für kleine Eimer. Je nach Sorte können die Pflanzen unterschiedlich viel Platz brauchen.
+> **Unsere Empfehlung für den Einstieg:** Das ist unsere eigene Einschätzung und steht so nicht in den Quellen. Halte dich lieber an die strengere RHS-Regel. Bei einem Behälter mit etwa 30 cm Durchmesser reicht eine Knolle, bei etwa 40 cm sind ein bis zwei sinnvoll. Die höheren Zahlen des BZL gelten eher für kleine Eimer. Je nach Sorte brauchen die Pflanzen unterschiedlich viel Platz.
 
 ## Welche Kartoffelsorten eignen sich?
 
@@ -178,7 +185,7 @@ Aussortieren solltest du grüne Knollen. Die RHS rät davon ab, sie zu essen. Da
 
 ## Die häufigsten Anfängerfehler
 
-Die folgenden Punkte ergeben sich aus den Hinweisen der Quellen.
+Diese Fehler lassen sich aus den Hinweisen der Quellen ableiten:
 
 - **Kein Wasserabzug:** Staunässe schadet den Pflanzen.
 - **Zu kleiner Behälter:** Das BZL nennt 10 Liter als Mindestvolumen.
@@ -191,7 +198,7 @@ Die folgenden Punkte ergeben sich aus den Hinweisen der Quellen.
 
 ## Lohnt sich der Anbau finanziell?
 
-Der Anbau im Pflanzsack ist nicht automatisch günstiger als der Einkauf im Supermarkt. Eine verlässliche Rechnung können wir nicht anbieten: Die Quellen nennen keine Erträge, und die hängen von Sorte, Wetter und Pflege ab. Versprechen wie „Kartoffeln fast gratis“ wären unseriös.
+Der Anbau im Pflanzsack ist nicht automatisch günstiger als der Einkauf im Supermarkt. Eine verlässliche Rechnung können wir dir nicht anbieten: Die Erträge hängen von Sorte, Wetter und Pflege ab, und die Quellen nennen dazu keine Zahlen. Versprechen wie „Kartoffeln fast gratis“ wären unseriös.
 
 Was Geld kostet, lässt sich benennen: der Behälter, die Erde und das Pflanzgut. Hier kannst du sparen:
 

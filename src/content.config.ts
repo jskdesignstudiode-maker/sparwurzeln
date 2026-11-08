@@ -58,6 +58,8 @@ const artikel = defineCollection({
     imageAlt: text,
     faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
     products: z.array(z.string()).default([]), // Produkt-IDs; fehlende Produkte werden einfach übersprungen
+    // Optional: Produktbox nach dem H2-Abschnitt mit dieser Überschrift einfügen. Nicht platzierte Produkte erscheinen am Artikelende.
+    productPlacements: z.array(z.object({ product: z.string(), after: z.string() })).default([]),
     sources: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]),
     pinterest: z
       .object({

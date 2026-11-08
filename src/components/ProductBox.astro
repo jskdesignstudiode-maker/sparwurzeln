@@ -23,13 +23,7 @@ const isAffiliate = p.network !== 'eigenes-produkt';
     {isAffiliate && <span class="badge">{p.network === 'amazon' ? 'Anzeige · Werbelink zu Amazon' : 'Anzeige · Werbelink'}</span>}
     <h3>{p.name}</h3>
     <p>{p.description}</p>
-    {
-      p.features.length > 0 && (
-        <ul>
-          {p.features.map((f) => <li>{f}</li>)}
-        </ul>
-      )
-    }
+    {p.features.length > 0 && <p class="product__features">{p.features.join(' · ')}</p>}
     <p>
       <a
         class="btn btn--small"

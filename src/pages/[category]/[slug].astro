@@ -38,6 +38,30 @@ const products = d.products.map((id) => productMap.get(id)).filter((p) => p !== 
 const hasAmazon = products.some((p) => p!.data.network === 'amazon');
 
 const { Content } = await render(article);
+
+// Produktboxen an passenden Stellen: HTML des Artikels vor der H2-Überschrift teilen, die auf den gewählten Abschnitt folgt.
+const placed = d.productPlacements.filter((pl) => productMap.has(pl.product));
+const placedIds = new Set(placed.map((pl) => pl.product));
+const unplaced = products.filter((p) => !placedIds.has(p!.id));
+type Segment = { html: string; product?: (typeof products)[number] };
+const segments: Segment[] = [];
+const html = article.rendered?.html ?? '';
+if (placed.length > 0 && html) {
+  const h2s = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((m) => ({ text: m[1].replace(/<[^>]+>/g, '').trim(), index: m.index! }));
+  const cuts = placed
+    .map((pl) => {
+      const i = h2s.findIndex((h) => h.text === pl.after);
+      if (i < 0) throw new Error(`Produktplatzierung: Abschnitt „${pl.after}“ nicht gefunden`);
+      return { pos: i + 1 < h2s.length ? h2s[i + 1].index : html.length, product: productMap.get(pl.product)! };
+    })
+    .sort((a, b) => a.pos - b.pos);
+  let last = 0;
+  for (const c of cuts) {
+    segments.push({ html: html.slice(last, c.pos), product: c.product });
+    last = c.pos;
+  }
+  segments.push({ html: html.slice(last) });
+}
 const published = effectiveDate(article);
 const url = `${site.url}${articlePath(article)}`;
 const abs = (src?: string) => (src ? (src.startsWith('http') ? src : site.url + src) : undefined);
@@ -100,7 +124,18 @@ const jsonLd = {
     }
 
     <div class="prose article-body">
-      <Content />
+      {
+        segments.length > 0 ? (
+          segments.map((seg) => (
+            <>
+              <Fragment set:html={seg.html} />
+              {seg.product && <ProductBox product={seg.product} />}
+            </>
+          ))
+        ) : (
+          <Content />
+        )
+      }
     </div>
 
     {
@@ -118,18 +153,10 @@ const jsonLd = {
     }
 
     {
-      products.length > 0 && (
-        <section class="products" aria-labelledby="produkte-titel">
-          <h2 id="produkte-titel">Passende Produkte <span class="badge">Anzeige</span></h2>
-          <p class="products__notice">
-            Die folgenden Links sind Werbelinks. Wenn du darüber kaufst, erhalten wir eine Provision. Für dich
-            ändert sich der Preis nicht.
-          </p>
-          {products.map((p) => <ProductBox product={p!} />)}
-          {hasAmazon && <p class="products__notice">{AMAZON_NOTICE}</p>}
-        </section>
-      )
+      unplaced.map((p) => <div class="prose"><ProductBox product={p!} /></div>)
     }
+
+    {hasAmazon && <p class="prose products__notice">{AMAZON_NOTICE}</p>}
 
     {
       d.sources.length > 0 && (
