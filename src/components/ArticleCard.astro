@@ -1,6 +1,6 @@
 ---
 import type { Article } from '../lib/content';
-import { effectiveDate, formatDate, isoDate } from '../lib/content';
+import { effectiveDate, formatDate, isoDate, articlePath } from '../lib/content';
 
 interface Props {
   article: Article;
@@ -10,7 +10,7 @@ const { article, categoryTitle } = Astro.props;
 const date = effectiveDate(article);
 ---
 
-<a class="card card--link" href={`/ratgeber/${article.id}`}>
+<a class="card card--link" href={articlePath(article)}>
   {categoryTitle && <span class="badge">{categoryTitle}</span>}
   <h3>{article.data.title}</h3>
   {article.data.description && <p>{article.data.description}</p>}

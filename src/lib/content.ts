@@ -68,4 +68,5 @@ export function getPublishedProducts(): Promise<Map<string, Product>> {
 export function formatDate(d: Date): string {
   return new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
 }
+export const articlePath = (a: Article) => `/${a.data.category}/${a.id}`;
 export const isoDate = (d: Date) => d.toISOString().slice(0, 10);

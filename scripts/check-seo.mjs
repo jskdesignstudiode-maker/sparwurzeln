@@ -100,13 +100,15 @@ const artDir = 'src/content/artikel';
 if (existsSync(artDir)) {
   for (const f of readdirSync(artDir).filter((x) => x.endsWith('.md'))) {
     const slug = f.replace(/\.md$/, '');
-    const status = (readFileSync(join(artDir, f), 'utf8').match(/^status:\s*["']?([\w-]+)/m) || [])[1] ?? 'entwurf';
-    if (status !== 'freigegeben' && existsSync(join(DIST, 'ratgeber', `${slug}.html`))) {
+    const text = readFileSync(join(artDir, f), 'utf8');
+    const status = (text.match(/^status:\s*["']?([\w-]+)/m) || [])[1] ?? 'entwurf';
+    const cat = (text.match(/^category:\s*["']?([\w-]+)/m) || [])[1] ?? '';
+    if (status !== 'freigegeben' && existsSync(join(DIST, cat, `${slug}.html`))) {
       err(`Ratgeber „${slug}“ hat Status „${status}“, wurde aber veröffentlicht`);
     }
   }
 }
-for (const rel of pages.filter((p) => p.startsWith('ratgeber/') && p !== 'ratgeber/index.html')) {
+for (const rel of pages.filter((p) => p.includes('/') && !p.startsWith('kategorie/') && p !== 'ratgeber/index.html')) {
   const html = readFileSync(join(DIST, rel), 'utf8');
   if (/\[PRÜFEN/i.test(html)) err(`${rel}: enthält noch [PRÜFEN]-Markierungen`);
 }

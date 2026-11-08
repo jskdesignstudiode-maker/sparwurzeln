@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getCategories, getPublishedArticles, effectiveDate, isoDate } from '../lib/content';
+import { getCategories, getPublishedArticles, effectiveDate, isoDate, articlePath } from '../lib/content';
 import { site } from '../data/site';
 
 // Eigene Sitemap: nimmt nur indexierbare Seiten auf.
@@ -24,7 +24,7 @@ export const GET: APIRoute = async () => {
     urls.push({ loc: `/kategorie/${c.id}`, lastmod: isoDate(newest) });
   }
   for (const a of articles) {
-    urls.push({ loc: `/ratgeber/${a.id}`, lastmod: isoDate(a.data.lastReviewed ?? effectiveDate(a)) });
+    urls.push({ loc: articlePath(a), lastmod: isoDate(a.data.lastReviewed ?? effectiveDate(a)) });
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

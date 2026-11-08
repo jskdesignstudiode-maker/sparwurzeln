@@ -11,13 +11,14 @@ import {
   effectiveDate,
   formatDate,
   isoDate,
+  articlePath,
   type Article,
 } from '../../lib/content';
 import { site, AMAZON_NOTICE } from '../../data/site';
 
 export async function getStaticPaths() {
   const articles = await getPublishedArticles();
-  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+  return articles.map((article) => ({ params: { category: article.data.category, slug: article.id }, props: { article } }));
 }
 
 interface Props {
@@ -38,7 +39,7 @@ const hasAmazon = products.some((p) => p!.data.network === 'amazon');
 
 const { Content } = await render(article);
 const published = effectiveDate(article);
-const url = `${site.url}/ratgeber/${article.id}`;
+const url = `${site.url}${articlePath(article)}`;
 const abs = (src?: string) => (src ? (src.startsWith('http') ? src : site.url + src) : undefined);
 
 const jsonLd = {
