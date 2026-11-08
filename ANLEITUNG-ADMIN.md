@@ -85,6 +85,10 @@ Aus einem Thema entsteht ein **Entwurf** mit Titel, Gliederung, Text, FAQ, SEO-T
 **Ausschalten:** `AI_ENABLED` zurück auf `"false"` oder das Secret löschen.
 Diese Funktion konnte ohne echten Schlüssel nur bis zur Abschaltprüfung getestet werden. Die erste echte Nutzung bitte aufmerksam kontrollieren.
 
+## 5a. Entwürfe von Claude (ohne zusätzliche Kosten)
+Du schreibst mir im Chat Thema und Kategorie. Ich recherchiere Quellen, schreibe den Ratgeber und speichere ihn als **Entwurf** im Projekt. Er erscheint im Admin unter *Ratgeber* mit Status *Entwurf* und ist auf der Website unsichtbar. Regeln: `REDAKTIONSRICHTLINIE.md`.
+Freigeben: Entwurf öffnen → Quellen und Text prüfen → *Letzten Prüftermin* eintragen → Status *Freigegeben* → *Veröffentlichen* → *Jetzt veröffentlichen*. Nach 1–2 Minuten ist er online.
+
 ## 6. Pinterest
 Jeder Ratgeber hat einen Bereich *Pinterest* (Titel, Beschreibung, Hochkant-Grafik, Status). Eine CSV-Liste aller **veröffentlichten** Ratgeber für die Planung lädst du unter `/admin/pinterest.csv`. Eine automatische Anbindung ist nicht eingebaut.
 
