@@ -1,0 +1,15 @@
+{
+  "title": "Selbermachen & Reparieren",
+  "order": 5,
+  "icon": "tools",
+  "short": "Reparieren statt neu kaufen und praktische Lösungen selbst bauen.",
+  "description": "Vieles lässt sich mit etwas Werkzeug und Anleitung selbst reparieren oder bauen. Wir zeigen, wo sich der Aufwand finanziell lohnt und wo Fachleute die bessere Wahl sind.",
+  "metaDescription": "Selbermachen und Reparieren: einfache Reparaturen, Wiederverwenden, DIY-Projekte und praktische Eigenbauideen für den Haushalt.",
+  "subcategories": [
+    { "title": "Einfache Reparaturen" },
+    { "title": "Wiederverwenden" },
+    { "title": "DIY-Projekte" },
+    { "title": "Haushaltslösungen" },
+    { "title": "Praktische Eigenbauideen" }
+  ]
+}

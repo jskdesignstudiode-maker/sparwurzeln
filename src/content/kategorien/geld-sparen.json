@@ -1,0 +1,15 @@
+{
+  "title": "Geld sparen",
+  "order": 1,
+  "icon": "coin",
+  "short": "Laufende Kosten senken und Ausgaben besser im Blick behalten.",
+  "description": "Wer seine festen und laufenden Kosten kennt, kann gezielt dort ansetzen, wo es sich lohnt. Hier geht es um Strom, Heizung, Wasser, Haushaltsbudget und bewusstes Einkaufen.",
+  "metaDescription": "Ratgeber zum Geldsparen im Alltag: Strom, Heizung und Wasser, Haushaltsbudget und bewusstes Einkaufen – verständlich und praxisnah.",
+  "subcategories": [
+    { "title": "Strom und Heizkosten reduzieren" },
+    { "title": "Wasser sparen" },
+    { "title": "Haushaltsbudget" },
+    { "title": "Bewusst einkaufen" },
+    { "title": "Laufende Kosten reduzieren" }
+  ]
+}

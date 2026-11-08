@@ -1,0 +1,15 @@
+{
+  "title": "Selbstversorgung",
+  "order": 2,
+  "icon": "sprout",
+  "short": "Gemüse, Obst und Kräuter selbst anbauen – auch auf kleinem Raum.",
+  "description": "Selbst anbauen geht auch ohne großen Garten: auf dem Balkon, im Gewächshaus oder in Pflanzgefäßen. Hier finden Sie Anleitungen von der Anzucht bis zur Bewässerung.",
+  "metaDescription": "Ratgeber zur Selbstversorgung: Gemüse und Obst anbauen, Gewächshaus, Balkon und Garten, Kräuter, Anzucht und Bewässerung.",
+  "subcategories": [
+    { "title": "Gemüse und Obst anbauen" },
+    { "title": "Gewächshaus" },
+    { "title": "Balkon und Garten" },
+    { "title": "Kräuter" },
+    { "title": "Anzucht und Bewässerung" }
+  ]
+}

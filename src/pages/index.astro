@@ -1,7 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { categories, site } from '../data/categories';
+import ArticleCard from '../components/ArticleCard.astro';
+import { site } from '../data/site';
+import { getCategories, getPublishedArticles } from '../lib/content';
+
+const [categories, articles] = await Promise.all([getCategories(), getPublishedArticles()]);
+const latest = articles.slice(0, 3);
+const titleOf = (id: string) => categories.find((c) => c.id === id)?.data.title;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -15,7 +21,7 @@ const jsonLd = {
 
 <Base
   title={site.name}
-  description="Sparwurzeln ist ein unabhängiger Ratgeber für günstigeres, einfacheres und selbstbestimmteres Leben: Geld sparen, selbst anbauen, günstig kochen, Vorräte anlegen und reparieren."
+  description="Unabhängiger Ratgeber für ein günstigeres, einfacheres Leben: Geld sparen, selbst anbauen, günstig kochen, Vorräte anlegen und reparieren."
   jsonLd={jsonLd}
 >
   <section class="hero">
@@ -33,17 +39,32 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section" id="themen" aria-labelledby="themen-titel">
+  {
+    latest.length > 0 && (
+      <section class="section" aria-labelledby="neu-titel">
+        <div class="container">
+          <span class="eyebrow">Neu</span>
+          <h2 id="neu-titel">Aktuelle Ratgeber</h2>
+          <div class="grid">
+            {latest.map((a) => <ArticleCard article={a} categoryTitle={titleOf(a.data.category)} />)}
+          </div>
+          <p><a href="/ratgeber">Alle Ratgeber ansehen →</a></p>
+        </div>
+      </section>
+    )
+  }
+
+  <section class={latest.length > 0 ? 'section section--tint' : 'section'} id="themen" aria-labelledby="themen-titel">
     <div class="container">
-      <span class="eyebrow">Fünf Themenbereiche</span>
+      <span class="eyebrow">{categories.length} Themenbereiche</span>
       <h2 id="themen-titel">Wo möchten Sie anfangen?</h2>
       <div class="grid">
         {
           categories.map((c) => (
-            <a class="card card--link" href={`/kategorie/${c.slug}`}>
-              <Icon name={c.icon} />
-              <h3>{c.title}</h3>
-              <p>{c.short}</p>
+            <a class="card card--link" href={`/kategorie/${c.id}`}>
+              <Icon name={c.data.icon} />
+              <h3>{c.data.title}</h3>
+              <p>{c.data.short}</p>
               <span class="card__more">Zum Thema →</span>
             </a>
           ))
@@ -52,7 +73,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section section--tint" aria-labelledby="prinzipien-titel">
+  <section class={latest.length > 0 ? 'section' : 'section section--tint'} aria-labelledby="prinzipien-titel">
     <div class="container">
       <span class="eyebrow">Unser Anspruch</span>
       <h2 id="prinzipien-titel">Ratgeber, die man prüfen kann</h2>

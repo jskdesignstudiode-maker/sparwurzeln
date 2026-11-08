@@ -1,0 +1,15 @@
+{
+  "title": "Ernährung & günstig kochen",
+  "order": 3,
+  "icon": "pot",
+  "short": "Abwechslungsreich essen, ohne das Budget zu sprengen.",
+  "description": "Gute Ernährung muss nicht teuer sein. Mit Planung, richtiger Lagerung und Resteverwertung lassen sich Kosten und Lebensmittelabfälle spürbar verringern.",
+  "metaDescription": "Günstig und ausgewogen kochen: preiswerte Rezepte, Wochenplanung, richtige Lagerung und Resteverwertung.",
+  "subcategories": [
+    { "title": "Preiswerte Rezepte" },
+    { "title": "Wochenplanung" },
+    { "title": "Lebensmittel richtig lagern" },
+    { "title": "Resteverwertung" },
+    { "title": "Günstige und ausgewogene Ernährung" }
+  ]
+}

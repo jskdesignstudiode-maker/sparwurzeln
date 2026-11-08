@@ -2,77 +2,74 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Icon from '../../components/Icon.astro';
-import { categories, type Category } from '../../data/categories';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCategories, getPublishedArticles, type Category } from '../../lib/content';
 
-export function getStaticPaths() {
-  return categories.map((category) => ({
-    params: { slug: category.slug },
-    props: { category },
-  }));
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((category) => ({ params: { slug: category.id }, props: { category } }));
 }
 
 interface Props {
   category: Category;
 }
 const { category } = Astro.props;
-const others = categories.filter((c) => c.slug !== category.slug);
+const c = category.data;
+
+const [categories, allArticles] = await Promise.all([getCategories(), getPublishedArticles()]);
+const articles = allArticles.filter((a) => a.data.category === category.id);
+const others = categories.filter((o) => o.id !== category.id);
+// Kategorien ohne Ratgeber sind dünne Seiten: nicht indexieren, bis Inhalte vorhanden sind.
+const empty = articles.length === 0;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: category.title,
-  description: category.metaDescription,
+  name: c.title,
+  description: c.metaDescription,
   inLanguage: 'de-DE',
 };
 ---
 
-<Base title={category.title} description={category.metaDescription} jsonLd={jsonLd}>
-  <Breadcrumb
-    items={[
-      { name: 'Startseite', href: '/' },
-      { name: category.title },
-    ]}
-  />
+<Base title={c.title} description={c.metaDescription} jsonLd={jsonLd} noindex={empty}>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: c.title }]} />
 
   <section class="section cat-head">
     <div class="container">
-      <Icon name={category.icon} />
-      <h1>{category.title}</h1>
-      <p class="lead">{category.description}</p>
+      <Icon name={c.icon} />
+      <h1>{c.title}</h1>
+      <p class="lead">{c.description}</p>
     </div>
   </section>
 
-  <section class="section section--tint" aria-labelledby="unterthemen">
-    <div class="container">
-      <h2 id="unterthemen">Themen in diesem Bereich</h2>
-      <ul class="tag-list">
-        {category.subcategories.map((s) => <li>{s.title}</li>)}
-      </ul>
-    </div>
-  </section>
+  {
+    c.subcategories.length > 0 && (
+      <section class="section section--tint" aria-labelledby="unterthemen">
+        <div class="container">
+          <h2 id="unterthemen">Themen in diesem Bereich</h2>
+          <ul class="tag-list">
+            {c.subcategories.map((s) => <li>{s.title}</li>)}
+          </ul>
+        </div>
+      </section>
+    )
+  }
 
   <section class="section" aria-labelledby="ratgeber">
     <div class="container">
       <h2 id="ratgeber">Ratgeber</h2>
-      <div class="notice">
-        <p>
-          Die ersten Ratgeber dieses Bereichs sind in Arbeit und werden vor der Veröffentlichung
-          geprüft. Sobald sie erscheinen, finden Sie sie hier.
-        </p>
-      </div>
       {
-        category.plannedArticles.length > 0 && (
-          <>
-            <h3>Geplant</h3>
-            <ul class="draft-list">
-              {category.plannedArticles.map((t) => (
-                <li>
-                  <span>{t}</span>
-                  <span class="badge">In Vorbereitung</span>
-                </li>
-              ))}
-            </ul>
-          </>
+        empty ? (
+          <div class="notice">
+            <p>
+              Die ersten Ratgeber dieses Bereichs sind in Arbeit und werden vor der Veröffentlichung geprüft.
+              Sobald sie erscheinen, finden Sie sie hier.
+            </p>
+          </div>
+        ) : (
+          <div class="grid">
+            {articles.map((a) => <ArticleCard article={a} />)}
+          </div>
         )
       }
     </div>
@@ -83,11 +80,11 @@ const jsonLd = {
       <h2 id="weitere">Weitere Themenbereiche</h2>
       <div class="grid">
         {
-          others.map((c) => (
-            <a class="card card--link" href={`/kategorie/${c.slug}`}>
-              <Icon name={c.icon} />
-              <h3>{c.title}</h3>
-              <p>{c.short}</p>
+          others.map((o) => (
+            <a class="card card--link" href={`/kategorie/${o.id}`}>
+              <Icon name={o.data.icon} />
+              <h3>{o.data.title}</h3>
+              <p>{o.data.short}</p>
             </a>
           ))
         }

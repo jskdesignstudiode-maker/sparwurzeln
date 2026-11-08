@@ -1,10 +1,19 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sparwurzeln",
+  "main": "src/worker/index.ts",
   "compatibility_date": "2026-11-01",
-  // Reine statische Auslieferung: kein Worker-Code nötig, keine laufenden Kosten über das Gratis-Kontingent hinaus.
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Der Worker läuft nur für Seiten und /api/* (nicht für Bilder, Skripte und den Admin-Ordner),
+    // damit er im kostenlosen Kontingent bleibt.
+    "run_worker_first": ["/*", "!/_astro/*", "!/uploads/*", "!/admin/*", "!/favicon.svg"]
+  },
+  "vars": {
+    "GITHUB_REPO": "jskdesignstudiode-maker/sparwurzeln",
+    // KI-Modul: "false" = aus (keine Kosten). Zum Einschalten auf "true" setzen UND das Secret ANTHROPIC_API_KEY hinterlegen.
+    "AI_ENABLED": "false"
   }
 }

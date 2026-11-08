@@ -1,0 +1,159 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import ProductBox from '../../components/ProductBox.astro';
+import {
+  getCategories,
+  getPublishedArticles,
+  getPublishedProducts,
+  effectiveDate,
+  formatDate,
+  isoDate,
+  type Article,
+} from '../../lib/content';
+import { site, AMAZON_NOTICE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles();
+  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+}
+
+interface Props {
+  article: Article;
+}
+const { article } = Astro.props;
+const d = article.data;
+
+const [categories, allArticles, productMap] = await Promise.all([
+  getCategories(),
+  getPublishedArticles(),
+  getPublishedProducts(),
+]);
+const category = categories.find((c) => c.id === d.category)!;
+const related = allArticles.filter((a) => a.data.category === d.category && a.id !== article.id).slice(0, 3);
+const products = d.products.map((id) => productMap.get(id)).filter((p) => p !== undefined);
+const hasAmazon = products.some((p) => p!.data.network === 'amazon');
+
+const { Content } = await render(article);
+const published = effectiveDate(article);
+const url = `${site.url}/ratgeber/${article.id}`;
+const abs = (src?: string) => (src ? (src.startsWith('http') ? src : site.url + src) : undefined);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: d.title,
+      description: d.description,
+      inLanguage: 'de-DE',
+      mainEntityOfPage: url,
+      datePublished: isoDate(published),
+      dateModified: isoDate(d.lastReviewed ?? published),
+      ...(d.image ? { image: abs(d.image) } : {}),
+      author: { '@type': 'Organization', name: site.name, url: site.url },
+      publisher: { '@type': 'Organization', name: site.name, url: site.url },
+    },
+    ...(d.faq.length > 0
+      ? [
+          {
+            '@type': 'FAQPage',
+            mainEntity: d.faq.map((f) => ({
+              '@type': 'Question',
+              name: f.question,
+              acceptedAnswer: { '@type': 'Answer', text: f.answer },
+            })),
+          },
+        ]
+      : []),
+  ],
+};
+---
+
+<Base title={d.seoTitle ?? d.title} description={d.description!} jsonLd={jsonLd}>
+  <Breadcrumb
+    items={[
+      { name: 'Startseite', href: '/' },
+      { name: category.data.title, href: `/kategorie/${category.id}` },
+      { name: d.title },
+    ]}
+  />
+
+  <article class="container article-head">
+    <div class="prose">
+      <a class="eyebrow" href={`/kategorie/${category.id}`}>{category.data.title}</a>
+      <h1>{d.title}</h1>
+      <p class="article-meta">
+        <span>Veröffentlicht: <time datetime={isoDate(published)}>{formatDate(published)}</time></span>
+        {
+          d.lastReviewed && (
+            <span>Zuletzt geprüft: <time datetime={isoDate(d.lastReviewed)}>{formatDate(d.lastReviewed)}</time></span>
+          )
+        }
+      </p>
+      {d.image && <img class="article-image" src={d.image} alt={d.imageAlt ?? ''} decoding="async" />}
+    </div>
+
+    <div class="prose article-body">
+      <Content />
+    </div>
+
+    {
+      d.faq.length > 0 && (
+        <section class="prose faq" aria-labelledby="faq-titel">
+          <h2 id="faq-titel">Häufige Fragen</h2>
+          {d.faq.map((f) => (
+            <details>
+              <summary>{f.question}</summary>
+              <p>{f.answer}</p>
+            </details>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      products.length > 0 && (
+        <section class="products" aria-labelledby="produkte-titel">
+          <h2 id="produkte-titel">Passende Produkte <span class="badge">Anzeige</span></h2>
+          <p class="products__notice">
+            Die folgenden Links sind Werbelinks. Wenn Sie darüber kaufen, erhalten wir eine Provision. Für Sie
+            ändert sich der Preis nicht.
+          </p>
+          {products.map((p) => <ProductBox product={p!} />)}
+          {hasAmazon && <p class="products__notice">{AMAZON_NOTICE}</p>}
+        </section>
+      )
+    }
+
+    {
+      d.sources.length > 0 && (
+        <section class="prose sources" aria-labelledby="quellen-titel">
+          <h2 id="quellen-titel">Quellen</h2>
+          <ul>
+            {d.sources.map((s) => (
+              <li>
+                <a href={s.url} rel="noopener noreferrer" target="_blank">{s.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="section section--tint" aria-labelledby="mehr-titel">
+        <div class="container">
+          <h2 id="mehr-titel">Mehr zum Thema {category.data.title}</h2>
+          <div class="grid">
+            {related.map((a) => <ArticleCard article={a} />)}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>

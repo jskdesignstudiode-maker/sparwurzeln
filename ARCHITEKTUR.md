@@ -33,9 +33,21 @@ Die genaue Umsetzung (eigener Editor oder ein bestehendes, kostenloses Werkzeug)
 - Domain: bereits bei Hostinger vorhanden
 - KI-Assistent (Phase 4): nur auf ausdrücklichen Wunsch, dann mit eigenem API-Schlüssel und Kostenlimit
 
-Keine kostenpflichtigen Dienste werden ohne Ihre Zustimmung eingebunden.
+Keine kostenpflichtigen Dienste werden ohne deine Zustimmung eingebunden.
 
 ## Erweiterbarkeit
 
-- Kategorien und Unterkategorien: `src/data/categories.ts` (später Verwaltung im Admin)
+- Kategorien und Unterkategorien: `src/content/kategorien/` (im Admin verwaltbar)
 - Weitere Sprachen, Newsletter, PDF-Downloads: Struktur lässt Platz dafür, wird bei Bedarf ergänzt
+
+---
+
+## Stand Phase 2 (Admin und Redaktionsworkflow)
+
+- **Inhalte** liegen als Dateien in `src/content/` (`artikel/*.md`, `kategorien/*.json`, `produkte/*.json`) und werden mit Astro Content Collections eingelesen. Neue Kategorien und Ratgeber erscheinen ohne Codeänderung.
+- **Admin** unter `/admin/`: Decap CMS (Open Source, lokal mitgeliefert, kein Fremdserver). Gespeichert wird per GitHub-Anmeldung direkt ins Repository; Cloudflare baut danach neu.
+- **Redaktionsworkflow** über das Feld `status` (Entwurf, In Prüfung, Freigegeben, Archiviert) plus Pflichtangaben (`src/lib/content.ts`). Nur Freigegebenes mit vollständigen Angaben wird gebaut.
+- **Worker** (`src/worker/`): GitHub-Anmeldung für den Admin, `noindex` auf Test-Domains (`workers.dev`), optionaler KI-Endpunkt (standardmäßig aus, nur für Personen mit Schreibrechten).
+- **SEO** : eigene `sitemap.xml` (nur indexierbare Seiten), `robots.txt`, Canonical auf `sparwurzeln.de`, Prüfskript `scripts/check-seo.mjs` bei jedem Build.
+- **Zeitplan**: täglicher GitHub-Workflow stößt Builds für geplante Veröffentlichungen an.
+- Bedienung: siehe `ANLEITUNG-ADMIN.md`.

@@ -295,3 +295,129 @@ svg {
 .breadcrumb a {
   color: var(--ink-soft);
 }
+
+/* ---------- Ratgeber-Seiten ---------- */
+.card__date {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.btn--small {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+.article-head {
+  padding-block: clamp(1.5rem, 4vw, 3rem) 1rem;
+}
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.5rem;
+}
+.article-image {
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  width: 100%;
+  height: auto;
+}
+.article-body {
+  padding-bottom: 2rem;
+}
+.prose h2 {
+  margin-top: 1.8em;
+}
+.prose h3 {
+  margin-top: 1.4em;
+}
+.prose img {
+  height: auto;
+  border-radius: var(--radius);
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-block: 1.2em;
+  font-size: 0.97rem;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+.prose blockquote {
+  margin: 1.2em 0;
+  padding: 0.2em 1.2em;
+  border-left: 4px solid var(--sand);
+  color: var(--ink-soft);
+}
+.faq details {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.faq summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq details p {
+  margin: 0.7rem 0 0;
+}
+.sources li {
+  margin-bottom: 0.3rem;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Produkte (Werbung) ---------- */
+.products {
+  background: var(--cream-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-block: 2.5rem;
+}
+.products > h2 {
+  margin-top: 0;
+}
+.product {
+  display: flex;
+  gap: 1.2rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+.product img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  flex: none;
+}
+.product h3 {
+  margin: 0.2rem 0 0.4rem;
+}
+.product ul {
+  padding-left: 1.2rem;
+  margin: 0 0 0.8rem;
+}
+.product__checked {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.products__notice {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0.5rem 0 0;
+}
+@media (max-width: 34rem) {
+  .product {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCategories, getPublishedArticles } from '../../lib/content';
+
+const [articles, categories] = await Promise.all([getPublishedArticles(), getCategories()]);
+const titleOf = (id: string) => categories.find((c) => c.id === id)?.data.title;
+const empty = articles.length === 0;
+---
+
+<Base
+  title="Alle Ratgeber"
+  description="Alle Ratgeber von Sparwurzeln im Überblick: Geld sparen, selbst anbauen, günstig kochen, Vorräte anlegen und reparieren."
+  noindex={empty}
+>
+  <Breadcrumb items={[{ name: 'Startseite', href: '/' }, { name: 'Alle Ratgeber' }]} />
+  <section class="section">
+    <div class="container">
+      <h1>Alle Ratgeber</h1>
+      {
+        empty ? (
+          <div class="notice">
+            <p>Die ersten Ratgeber sind in Arbeit und werden vor der Veröffentlichung geprüft.</p>
+          </div>
+        ) : (
+          <div class="grid">
+            {articles.map((a) => <ArticleCard article={a} categoryTitle={titleOf(a.data.category)} />)}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>

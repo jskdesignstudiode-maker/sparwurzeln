@@ -1,0 +1,27 @@
+name: Geplante Veröffentlichungen
+
+# Die Website wird nur beim Build neu erzeugt. Dieser Workflow prüft täglich, ob ein
+# freigegebener Ratgeber heute erscheinen soll, und stößt dann einen neuen Build an.
+on:
+  schedule:
+    - cron: '20 3 * * *' # täglich 03:20 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prüfen, ob heute etwas erscheinen soll
+        id: check
+        run: node scripts/geplante-veroeffentlichung.mjs >> "$GITHUB_OUTPUT"
+      - name: Neuen Build anstoßen
+        if: steps.check.outputs.due == 'true'
+        run: |
+          git config user.name "Sparwurzeln Planung"
+          git config user.email "noreply@users.noreply.github.com"
+          git commit --allow-empty -m "Geplante Veröffentlichung: neuer Build"
+          git push

@@ -1,6 +1,8 @@
 ---
 import Logo from './Logo.astro';
-import { categories, site } from '../data/categories';
+import { site } from '../data/site';
+import { getCategories } from '../lib/content';
+const categories = await getCategories();
 const year = new Date().getFullYear();
 ---
 
@@ -13,7 +15,8 @@ const year = new Date().getFullYear();
     <nav aria-label="Themen">
       <h2 class="site-footer__h">Themen</h2>
       <ul>
-        {categories.map((c) => <li><a href={`/kategorie/${c.slug}`}>{c.title}</a></li>)}
+        <li><a href="/ratgeber">Alle Ratgeber</a></li>
+        {categories.map((c) => <li><a href={`/kategorie/${c.id}`}>{c.data.title}</a></li>)}
       </ul>
     </nav>
     <nav aria-label="Informationen">

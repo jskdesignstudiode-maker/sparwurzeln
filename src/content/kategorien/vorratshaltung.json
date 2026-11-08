@@ -1,0 +1,15 @@
+{
+  "title": "Vorratshaltung & Haltbarmachen",
+  "order": 4,
+  "icon": "jar",
+  "short": "Ernte und Einkäufe sicher haltbar machen und Vorräte ordnen.",
+  "description": "Einkochen, Einfrieren, Dörren und Fermentieren: Hier lernen Sie bewährte Methoden kennen – mit besonderem Augenmerk auf Hygiene und Lebensmittelsicherheit.",
+  "metaDescription": "Lebensmittel haltbar machen: Einkochen, Einfrieren, Dörren, Fermentieren und Vorräte sinnvoll organisieren.",
+  "subcategories": [
+    { "title": "Einkochen" },
+    { "title": "Einfrieren" },
+    { "title": "Dörren" },
+    { "title": "Fermentieren" },
+    { "title": "Vorräte organisieren" }
+  ]
+}

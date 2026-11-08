@@ -1,0 +1,45 @@
+---
+import type { Product } from '../lib/content';
+import { formatDate } from '../lib/content';
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+const p = product.data;
+const linkLabel: Record<string, string> = {
+  amazon: 'Bei Amazon ansehen',
+  awin: 'Zum Anbieter',
+  direkt: 'Zum Anbieter',
+  'eigenes-produkt': 'Zum Produkt',
+  sonstige: 'Zum Anbieter',
+};
+const isAffiliate = p.network !== 'eigenes-produkt';
+---
+
+<article class="product">
+  {p.image && <img src={p.image} alt={p.imageAlt ?? ''} loading="lazy" decoding="async" width="160" height="160" />}
+  <div class="product__body">
+    {isAffiliate && <span class="badge">Anzeige</span>}
+    <h3>{p.name}</h3>
+    <p>{p.description}</p>
+    {
+      p.features.length > 0 && (
+        <ul>
+          {p.features.map((f) => <li>{f}</li>)}
+        </ul>
+      )
+    }
+    <p>
+      <a
+        class="btn btn--small"
+        href={p.url}
+        rel={isAffiliate ? 'sponsored nofollow noopener noreferrer' : 'noopener'}
+        target="_blank"
+      >
+        {linkLabel[p.network]}
+      </a>
+    </p>
+    {p.lastChecked && <p class="product__checked">Angaben zuletzt geprüft: {formatDate(p.lastChecked)}</p>}
+  </div>
+</article>

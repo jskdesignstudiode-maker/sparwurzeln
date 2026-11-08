@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>KI-Entwurf – Sparwurzeln Verwaltung</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      body { font-family: system-ui, sans-serif; background: #f5f2e9; color: #303d32; margin: 0; line-height: 1.6; }
+      main { max-width: 40rem; margin: 2rem auto; padding: 0 1rem 4rem; }
+      h1 { font-family: Georgia, serif; margin-bottom: 0.3rem; }
+      .box { background: #fff; border: 1px solid #e0dac9; border-radius: 14px; padding: 1.4rem; margin-top: 1.2rem; }
+      label { display: block; font-weight: 600; margin: 1rem 0 0.3rem; }
+      input, select, textarea { width: 100%; box-sizing: border-box; padding: 0.7rem; font: inherit; border: 1px solid #c9c2ad; border-radius: 8px; }
+      button { margin-top: 1.2rem; background: #526747; color: #fff; border: 0; border-radius: 999px; padding: 0.8rem 1.5rem; font: 600 1rem system-ui; cursor: pointer; }
+      button[disabled] { opacity: 0.6; cursor: wait; }
+      .msg { margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 8px; }
+      .msg.err { background: #fbe9e7; border-left: 4px solid #b3392b; }
+      .msg.ok { background: #e8f1e4; border-left: 4px solid #526747; }
+      .msg.info { background: #fbf3e2; border-left: 4px solid #b9956b; }
+      .small { font-size: 0.9rem; color: #55625a; }
+      a { color: #3f5136; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="/admin/">← Zurück zur Verwaltung</a></p>
+      <h1>KI-Entwurf erstellen</h1>
+      <p class="small">
+        Aus einem Thema entsteht ein Ratgeber-<strong>Entwurf</strong> mit SEO-Daten, FAQ und Pinterest-Texten.
+        Er wird nie automatisch veröffentlicht und enthält Markierungen <code>[PRÜFEN]</code> für alles, was Sie
+        gegen seriöse Quellen prüfen müssen.
+      </p>
+
+      <div id="status" class="msg info" hidden></div>
+
+      <form id="form" class="box">
+        <label for="topic">Thema oder Frage</label>
+        <input id="topic" required minlength="5" maxlength="300" placeholder="z. B. Wie kann ich ohne Garten Kartoffeln anbauen?" />
+
+        <label for="category">Kategorie</label>
+        <select id="category" required></select>
+
+        <label for="notes">Hinweise (optional)</label>
+        <textarea id="notes" rows="3" maxlength="1000" placeholder="z. B. Zielgruppe, Schwerpunkt, was nicht vorkommen soll"></textarea>
+
+        <button id="go" type="submit">Entwurf erstellen</button>
+        <p class="small">Jede Erstellung verursacht Kosten bei Ihrem KI-Anbieter, sobald das Modul aktiviert ist.</p>
+      </form>
+
+      <div id="result" class="msg" hidden></div>
+    </main>
+    <script src="/admin/ki.js"></script>
+  </body>
+</html>

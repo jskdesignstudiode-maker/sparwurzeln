@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { categories } from '../data/categories';
+import { getCategories } from '../lib/content';
+const categories = await getCategories();
 const current = Astro.url.pathname.replace(/\.html$/, '');
 ---
 
@@ -15,10 +16,10 @@ const current = Astro.url.pathname.replace(/\.html$/, '');
           categories.map((c) => (
             <li>
               <a
-                href={`/kategorie/${c.slug}`}
-                aria-current={current === `/kategorie/${c.slug}` ? 'page' : undefined}
+                href={`/kategorie/${c.id}`}
+                aria-current={current === `/kategorie/${c.id}` ? 'page' : undefined}
               >
-                {c.title}
+                {c.data.title}
               </a>
             </li>
           ))
