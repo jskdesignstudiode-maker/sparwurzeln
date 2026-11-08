@@ -52,7 +52,7 @@ reviewNotes: |
   - Bewusst weggelassen: Erntemengen, Preise, konkrete Sortenempfehlungen für frühe Sorten (die Quellen nennen dafür keine), persönliche Erfahrungen.
   - Drei Amazon-Produkte sind als Entwurf vorbereitet (src/content/produkte, Status „entwurf“) und hier unter „products“ eingetragen, aber NICHT aktiv. Die Links (link.amazon/…) konnten von hier nicht aufgelöst werden. Es fehlt die Bestätigung von Weiterleitungsziel, Produktzuordnung und Partnerkennung. Aktivierung: Status der Produktdatei auf „veroeffentlicht“ setzen.
   - Keine internen Links im Text, weil noch kein anderer Ratgeber veröffentlicht ist.
-  - Bilder: Drei von der Nutzerin bereitgestellte Pixabay-Fotos (Quelle laut Nutzerin; Lizenz nach Pixabay-Zusammenfassung, Namensnennung nicht vorgeschrieben). Die Bildautoren sind uns nicht bekannt. Es fehlt weiterhin ein Foto, das den Pflanzsack selbst zeigt; die Bildunterschriften weisen darauf hin, dass es Feld- bzw. Beetfotos sind.
+  - Bilder: Drei von der Nutzerin bereitgestellte Pixabay-Fotos (Quelle laut Nutzerin; Lizenz nach Pixabay-Zusammenfassung, Namensnennung nicht vorgeschrieben). Die Bildautoren sind uns nicht bekannt. Ein viertes Pixabay-Foto (Kartoffelpflanzen in schwarzen Säcken) zeigt den Anbau im Sack. Die anderen drei sind Feld- bzw. Beetfotos und in den Bildunterschriften als solche gekennzeichnet.
   - Die „Vorsichtige Anfängerempfehlung“ zur Knollenzahl ist eine eigene Einschätzung (abgeleitet aus der strengeren RHS-Regel) und im Text so gekennzeichnet.
 ---
 
@@ -150,6 +150,9 @@ Die genauen Zeitpunkte unterscheiden sich je nach Region, Lage und Witterung. Di
 3. **Knollen auflegen.** Lege die Pflanzkartoffeln mit den Trieben nach oben auf die Erde. Die RHS rät zu etwa 30 cm Abstand.
 4. **Bedecken.** Das BZL setzt die Knollen etwa 5 cm tief. Decke sie mit Erde ab.
 5. **Angießen.** Gieße vorsichtig, bis die Erde durchfeuchtet ist, aber nichts im Behälter steht.
+
+![Junge Kartoffelpflanzen mit grünen Blättern in schwarzen Pflanzsäcken mit dunkler Erde](/uploads/kartoffelpflanzen-im-pflanzsack.jpg)
+*Junge Kartoffelpflanzen in Säcken aus schwarzer Folie.*
 
 ## Warum und wann Erde nachgefüllt wird
 
